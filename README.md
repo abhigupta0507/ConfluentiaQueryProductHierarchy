@@ -1,5 +1,9 @@
 # Multilingual Query-Category Relevance
 
+# Live:
+[https://multilingual-query-ncruipxklwowvhu7ydikuf.streamlit.app/](https://multilingual-query-ncruipxklwowvhu7ydikuf.streamlit.app/)
+
+
 ## Problem
 Match multilingual search queries to product categories. Binary classification: relevant (1) or not (0).
 
