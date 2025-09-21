@@ -9,8 +9,6 @@ import xgboost as xgb
 train_csv = "/content/train.csv"
 test_csv  = "/content/test.csv"
 
-
-
 # Load data
 train_df = pd.read_csv(train_csv)
 test_df  = pd.read_csv(test_csv)
@@ -61,7 +59,6 @@ X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.1, stratify=
 # X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 X_train_resampled, y_train_resampled = X_train, y_train
 
-# --- Try XGBoost (optional, usually better) ---
 xgb_clf = xgb.XGBClassifier(
     n_estimators=200,
     learning_rate=0.1,
@@ -77,7 +74,6 @@ val_preds_xgb = xgb_clf.predict(X_val)
 print("XGBoost F1:", f1_score(y_val, val_preds_xgb, pos_label=1))
 print(classification_report(y_val, val_preds_xgb))
 
-# Final model = choose best (e.g. xgb_clf)
 final_preds = xgb_clf.predict(X_test)
 
 # Save submission
@@ -98,4 +94,5 @@ print(f"Predictions saved to {output_path}")
 #     accuracy                           0.73      2132
 #    macro avg       0.70      0.61      0.62      2132
 # weighted avg       0.72      0.73      0.69      2132
+
 
