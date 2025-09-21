@@ -61,19 +61,6 @@ X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.1, stratify=
 # X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 X_train_resampled, y_train_resampled = X_train, y_train
 
-print(f"Original training set: {len(X_train)} samples")
-print(f"After SMOTE: {len(X_train_resampled)} samples")
-print(f"Class distribution after SMOTE: {np.bincount(y_train_resampled)}")
-
-# --- Logistic Regression baseline ---
-log_reg = LogisticRegression(max_iter=500)
-log_reg.fit(X_train_resampled, y_train_resampled)
-
-
-val_preds = log_reg.predict(X_val)
-print("Logistic Regression F1:", f1_score(y_val, val_preds, pos_label=1))
-print(classification_report(y_val, val_preds))
-
 # --- Try XGBoost (optional, usually better) ---
 xgb_clf = xgb.XGBClassifier(
     n_estimators=200,
@@ -101,22 +88,6 @@ output_df.to_csv(output_path, index=False)
 print(f"Predictions saved to {output_path}")
 
 
-# Original training set: 19180 samples
-# After SMOTE: 19180 samples
-# Class distribution after SMOTE: [ 6063 13117]
-# Logistic Regression F1: 0.8080870917573872
-#               precision    recall  f1-score   support
-
-#            0       0.58      0.32      0.41       674
-#            1       0.74      0.89      0.81      1458
-
-#     accuracy                           0.71      2132
-#    macro avg       0.66      0.61      0.61      2132
-# weighted avg       0.69      0.71      0.68      2132
-
-# /usr/local/lib/python3.12/dist-packages/xgboost/training.py:183: UserWarning: [04:20:20] WARNING: /workspace/src/learner.cc:738: 
-# Parameters: { "use_label_encoder" } are not used.
-
 #   bst.update(dtrain, iteration=i, fobj=obj)
 # XGBoost F1: 0.8252810695837132
 #               precision    recall  f1-score   support
@@ -127,3 +98,4 @@ print(f"Predictions saved to {output_path}")
 #     accuracy                           0.73      2132
 #    macro avg       0.70      0.61      0.62      2132
 # weighted avg       0.72      0.73      0.69      2132
+
