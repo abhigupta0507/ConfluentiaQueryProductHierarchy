@@ -35,8 +35,7 @@ streamlit run app.py
 
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| **0** (Not Relevant) | 0.67 | 0.30 | 0.41 | 674 |
-| **1** (Relevant) | 0.74 | 0.93 | **0.83** | 1458 |
+| **1** | 0.74 | 0.93 | **0.83** | 1458 |
 
 ## Summary Metrics
 
