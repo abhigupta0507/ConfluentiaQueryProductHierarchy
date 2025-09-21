@@ -21,7 +21,7 @@ streamlit run app.py
 
 ## Files
 - `app.py` - Streamlit demo
-- `model.py` - Same as app.py (duplicate)
+- `model.py` - Model code (change file paths)
 - `xgb_model.json` - Trained XGBoost model
 - `requirements.txt` - Dependencies
 
